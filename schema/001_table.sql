@@ -1,4 +1,4 @@
--- Auto-generated from schema-map.psd1 (map@1e83bb6)
+-- Auto-generated from schema-map.psd1 (map@6cefe8e)
 -- table: worker_locks
 CREATE TABLE IF NOT EXISTS worker_locks (
   name VARCHAR(191) NOT NULL PRIMARY KEY,
