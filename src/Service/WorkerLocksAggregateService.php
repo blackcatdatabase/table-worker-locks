@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BlackCat\Database\Packages\WorkerLocks\Service;
 
-use BlackCat\Core\Database\Database;
+use BlackCat\Core\Database;
 use BlackCat\Database\Packages\WorkerLocks\Dto\WorkerLockDto;
 use BlackCat\Database\Packages\WorkerLocks\Mapper\WorkerLockDtoMapper;
 use BlackCat\Database\Packages\WorkerLocks\Repository\WorkerLockRepository;
