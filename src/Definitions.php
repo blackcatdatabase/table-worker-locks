@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\WorkerLocks;
 final class Definitions {
     // --- základní metadata ---
     public static function table(): string { return 'worker_locks'; }
-    public static function contractView(): string { return 'v_worker_locks_contract'; }
+    public static function contractView(): string { return 'vw_worker_locks'; }
     /** @return string[] */
     public static function columns(): array { return [ 'name', 'locked_until' ]; }
     public static function pk(): string { return 'name'; }
