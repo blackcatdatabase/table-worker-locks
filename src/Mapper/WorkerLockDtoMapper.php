@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class WorkerLockDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'locked_until' => 'lockedUntil' ];
+    private const COL_TO_PROP = [ 'name' => 'name', 'locked_until' => 'lockedUntil' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [];
