@@ -11,7 +11,9 @@ namespace BlackCat\Database\Packages\WorkerLocks\Dto;
 final class WorkerLockDto implements \JsonSerializable {
     public function __construct(
         #[\SensitiveParameter] public readonly string $name,
-        public readonly \DateTimeImmutable $lockedUntil
+        public readonly \DateTimeImmutable $lockedUntil,
+        public readonly \DateTimeImmutable $createdAt,
+        public readonly \DateTimeImmutable $updatedAt
     ) {}
 
     /** Suitable for serialization/logging (without large blobs). */

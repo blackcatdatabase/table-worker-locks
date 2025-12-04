@@ -32,7 +32,7 @@ final class Criteria extends BaseCriteria
     /** Columns that are safe to use inside WHERE filters. */
     protected function filterable(): array
     {
-        return [ 'name', 'locked_until' ];
+        return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
     }
 
     /** Columns used for full-text LIKE/ILIKE searches. */
@@ -44,7 +44,7 @@ final class Criteria extends BaseCriteria
 /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
 protected function sortable(): array
 {
-    return [ 'name', 'locked_until' ];
+    return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
 }
 
     /**
@@ -104,6 +104,12 @@ protected function sortable(): array
     public function byIds(array $ids): static {
         if (!$ids) return $this->whereRaw('1=0');
         return $this->where('name', 'IN', array_values($ids));
+    }
+    public function createdBetween(?\DateTimeInterface $from, ?\DateTimeInterface $to): static {
+        return $this->between('created_at', $from, $to);
+    }
+    public function updatedSince(\DateTimeInterface $ts): static {
+        return $this->where('updated_at', '>=', $ts);
     }
 
 }
