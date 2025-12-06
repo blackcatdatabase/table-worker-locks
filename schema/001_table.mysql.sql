@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 -- Auto-generated from schema-map-mysql.yaml (map@sha1:5E62933580349BE7C623D119AC9D1301A62F03EF)
-=======
--- Auto-generated from schema-map-mysql.psd1 (map@62c9c93)
->>>>>>> origin/main
 -- engine: mysql
 -- table:  worker_locks
 
