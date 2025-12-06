@@ -8,7 +8,11 @@ final class Definitions {
     public static function table(): string { return 'worker_locks'; }
     public static function contractView(): string { return 'vw_worker_locks'; }
     /** @return string[] */
+<<<<<<< HEAD
     public static function columns(): array { return [ 'name', 'locked_until', 'created_at', 'updated_at' ]; }
+=======
+    public static function columns(): array { return [ 'name', 'locked_until' ]; }
+>>>>>>> origin/main
 
     /** @var array<string,array<int,string>> */
     public const STATUS_TRANSITIONS = [];
@@ -19,6 +23,7 @@ final class Definitions {
      * @return string[]
      */
     public static function pkColumns(): array {
+<<<<<<< HEAD
         $raw = trim('name');
         if ($raw === '') {
             throw new \InvalidArgumentException('Definitions::pkColumns(): token name must not be empty.');
@@ -28,6 +33,21 @@ final class Definitions {
             preg_split('/\s*,\s*/', $raw) ?: []
         )));
         return $parts ?: [$raw];
+=======
+        $raw = 'name';
+        $parts = array_values(array_filter(array_map(
+            static fn($p) => trim($p, " \t\n\r\0\x0B`\""),
+            preg_split('/\s*,\s*/', $raw ?? '')
+        )));
+        if ($parts) {
+            return $parts;
+        }
+        $rawClean = trim((string)$raw, " \t\n\r\0\x0B`\"");
+        if ($rawClean === '') {
+            throw new \InvalidArgumentException('Definitions::pkColumns(): token name must not be empty.');
+        }
+        return [$rawClean];
+>>>>>>> origin/main
     }
 
     /**
@@ -43,6 +63,7 @@ final class Definitions {
 
     // --- optional metadata ---
     public static function softDeleteColumn(): ?string {
+<<<<<<< HEAD
         $c = trim(''); return $c !== '' ? $c : null;
     }
     public static function updatedAtColumn(): ?string {
@@ -54,6 +75,19 @@ final class Definitions {
     /** e.g. "created_at DESC, id DESC" */
     public static function defaultOrder(): ?string {
         $c = trim('created_at DESC, name DESC'); return $c !== '' ? $c : null;
+=======
+        $c = ''; return $c !== '' ? $c : null;
+    }
+    public static function updatedAtColumn(): ?string {
+        $c = ''; return $c !== '' ? $c : null;
+    }
+    public static function versionColumn(): ?string {
+        $c = ''; return $c !== '' ? $c : null;
+    }
+    /** e.g. "created_at DESC, id DESC" */
+    public static function defaultOrder(): ?string {
+        $c = 'name DESC'; return $c !== '' ? $c : null;
+>>>>>>> origin/main
     }
 
     /** @return array<int,array<int,string>> list of unique keys */
@@ -68,9 +102,12 @@ final class Definitions {
     /** @return array<string,string> alias => column mapping (for input normalization) */
     public static function paramAliases(): array { return []; }
 
+<<<<<<< HEAD
     /** @return string[] columns that are generated/virtual and must be excluded from INSERT/UPSERT input */
     public static function generatedColumns(): array { return []; }
     
+=======
+>>>>>>> origin/main
     /** Repository hint: is the version column actually numeric? (no information_schema needed) */
     public static function versionIsNumeric(): bool
     {
@@ -89,7 +126,11 @@ final class Definitions {
      * identity | uuid | natural | composite
      */
     public static function pkStrategy(): string {
+<<<<<<< HEAD
         $c = trim('natural');
+=======
+        $c = 'natural';
+>>>>>>> origin/main
         return $c !== '' ? $c : 'natural';
     }
 
@@ -130,4 +171,8 @@ final class Definitions {
         $cols = self::columns();
         return in_array('uuid', $cols, true) || in_array('uuid_bin', $cols, true);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

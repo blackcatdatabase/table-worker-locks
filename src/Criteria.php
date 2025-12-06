@@ -22,7 +22,11 @@ use BlackCat\Core\Database;
 final class Criteria extends BaseCriteria
 {
     /** Hard clamp perPage to [1..maxPerPage] for this repo. */
+<<<<<<< HEAD
     public function perPage(): int
+=======
+    protected function perPage(): int
+>>>>>>> origin/main
     {
         $pp = (int) parent::perPage();
         $pp = max(1, $pp);
@@ -32,7 +36,11 @@ final class Criteria extends BaseCriteria
     /** Columns that are safe to use inside WHERE filters. */
     protected function filterable(): array
     {
+<<<<<<< HEAD
         return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
+=======
+        return [ 'name', 'locked_until' ];
+>>>>>>> origin/main
     }
 
     /** Columns used for full-text LIKE/ILIKE searches. */
@@ -41,11 +49,20 @@ final class Criteria extends BaseCriteria
         return [ 'name' ];
     }
 
+<<<<<<< HEAD
 /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
 protected function sortable(): array
 {
     return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
 }
+=======
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        $x = [ 'name', 'locked_until' ];
+        return $x ?: $this->filterable();
+    }
+>>>>>>> origin/main
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
@@ -86,8 +103,13 @@ protected function sortable(): array
         $c = new static(); // previously: new self()
 
         $c->setDialectFromDatabase($db);
+<<<<<<< HEAD
         if ($quoteIdentifiers) { $c->enableIdentifierQuoting(true); }
         if ($tenantId !== null && $tenantColumn !== '') { $c->tenant($tenantId, $tenantColumn); }
+=======
+        if ($quoteIdentifiers) { $c->quoteIdentifiers(true); }
+        if ($tenantId !== null) { $c->tenant($tenantId, $tenantColumn); }
+>>>>>>> origin/main
 
         if (\method_exists(\BlackCat\Database\Packages\WorkerLocks\Definitions::class, 'softDeleteColumn')) {
             $soft = \BlackCat\Database\Packages\WorkerLocks\Definitions::softDeleteColumn();
@@ -98,6 +120,7 @@ protected function sortable(): array
 
     // --- Generated criteria helpers (per table) ---
     
+<<<<<<< HEAD
     public function byId(int|string $id): static {
         return $this->where('name', '=', $id);
     }
@@ -113,3 +136,14 @@ protected function sortable(): array
     }
 
 }
+=======
+    public function byId(int|string $id): self {
+        return $this->where('t.name = :cid', ['cid' => $id]);
+    }
+    public function byIds(array $ids): self {
+        if (!$ids) return $this->where('1=0');
+        return $this->whereIn('t.name', array_values($ids));
+    }
+
+}
+>>>>>>> origin/main
