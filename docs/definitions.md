@@ -5,7 +5,7 @@ Distributed/DB-backed locks for background workers.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| locked_until | TIMESTAMPTZ(6) | NO |  | Lease expiration time (UTC). |
+| locked_until | DATETIME(6) | NO |  | Lease expiration time (UTC). |
 | name | VARCHAR(191) | NO |  | Lock name (primary key). |
 
 ## Engine Details
@@ -29,5 +29,5 @@ Indexes:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_worker_locks | mysql | algorithm=MERGE, security=INVOKER | [packages\worker-locks\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/worker-locks/schema/040_views.mysql.sql) |
-| vw_worker_locks | postgres |  | [packages\worker-locks\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/worker-locks/schema/040_views.postgres.sql) |
+| vw_worker_locks | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_worker_locks | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
