@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'name' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'name', 'locked_until', 'created_at', 'updated_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
