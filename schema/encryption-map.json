@@ -1,0 +1,20 @@
+{
+  "tables": {
+    "worker_locks": {
+      "columns": {
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "locked_until": {
+          "strategy": "passthrough"
+        },
+        "name": {
+          "strategy": "passthrough"
+        },
+        "updated_at": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}

@@ -3,10 +3,12 @@
 Distributed/DB-backed locks for background workers.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| name | VARCHAR(191) | NO |  | Lock name (primary key). |
-| locked_until | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO |  | Lease expiration time (UTC). |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| name | VARCHAR(191) | NO |  | Lock name (primary key). |  |
+| locked_until | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO |  | Lease expiration time (UTC). |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
+| updated_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |  |
 
 ## Engine Details
 
