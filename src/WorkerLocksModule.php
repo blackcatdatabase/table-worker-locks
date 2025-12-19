@@ -87,8 +87,8 @@ SQL;
         $hasTable = SchemaIntrospector::hasTable($db, $d, $table);
         $hasView  = SchemaIntrospector::hasView($db, $d, $view);
 
-        // Quick index/FK check â€“ generator injects names (case-sensitive per DB)
-        $expectedIdx = [];
+        // Quick index/FK check - generator injects names (case-sensitive per DB)
+        $expectedIdx = [ 'idx_worker_locks_until' ];
         if ($d->isMysql()) {
             // Drop PG-only index naming patterns (e.g., GIN/GiST)
             $expectedIdx = array_values(array_filter(
@@ -121,7 +121,7 @@ SQL;
             'columns'     => Definitions::columns(),
             'version'     => $this->version(),
             'dialects'    => [ 'mysql', 'postgres' ],
-            'indexes'     => [],
+            'indexes'     => [ 'idx_worker_locks_until' ],
             'foreignKeys' => [],
         ];
     }
